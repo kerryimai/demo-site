@@ -53,7 +53,6 @@ app.post('/comments', (req, res) => {
     res.status(400).send();
     return;
   }
-  console.log(req.body);
   client.query('INSERT INTO comments (comment, user_id) values (\'' + req.body.comment + '\', \'' + req.body.userId + '\');', [], (err, dbResult) => {
     if (err) {
       console.log(err);
