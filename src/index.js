@@ -1,6 +1,10 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
+
+app.use(bodyParser.json());
+
 const port = process.env.PORT || 3000;
 
 const { Client } = require('pg')
@@ -43,5 +47,21 @@ app.get('/comments', (req, res) => {
     })
   }
 });
+
+app.post('/comments', (req, res) => {
+  if (!req.body || !req.body.userId || !req.body.comment) {
+    res.status(400).send();
+    return;
+  }
+  console.log(req.body);
+  client.query('INSERT INTO comments (comment, user_id) values (\'' + req.body.comment + '\', \'' + req.body.userId + '\');', [], (err, dbResult) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+    res.status(200).send();
+  });
+})
 
 app.listen(port, () => console.log('server started on port ' + port));
