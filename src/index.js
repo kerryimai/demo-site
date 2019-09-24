@@ -8,8 +8,13 @@ app.use(bodyParser.json());
 const port = process.env.PORT || 3000;
 
 const { Client } = require('pg')
-const client = new Client()
-client.connect()
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+client.connect();
 
 /**
  * This is a super-smart method that works with arrays or single
