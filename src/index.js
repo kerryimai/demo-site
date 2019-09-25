@@ -9,6 +9,12 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors({ methods: '*' }));
 
+app.use((req, res, next) => {
+  res.cookie('superSecret', 'goose game', { httpOnly: true });
+  res.cookie('sortaSecret', '42', { httpOnly: false });
+  next();
+});
+
 const port = process.env.PORT || 3000;
 
 const { Client } = require('pg')
