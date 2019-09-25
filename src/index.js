@@ -1,20 +1,27 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const morgan = require('morgan');
 
 const app = express();
 
+app.use(morgan('combined'));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({ methods: '*' }));
 
 const port = process.env.PORT || 3000;
 
 const { Client } = require('pg')
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
+let client;
+if (process.env.DATABASE_URL) {
+  client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
+  });
+} else {
+  client = new Client();
+}
 
 client.connect();
 
@@ -69,5 +76,7 @@ app.post('/comments', (req, res) => {
     res.status(200).send();
   });
 })
+
+app.use(express.static('public'))
 
 app.listen(port, () => console.log('server started on port ' + port));
