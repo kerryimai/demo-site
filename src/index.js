@@ -10,8 +10,8 @@ app.use(bodyParser.json());
 app.use(cors({ methods: '*' }));
 
 app.use((req, res, next) => {
-  res.cookie('superSecret', 'goose game', { httpOnly: true });
-  res.cookie('sortaSecret', '42', { httpOnly: false });
+  res.cookie('httpOnlyBearerToken', 'this is a bank account bearer token that is inaccessible from Javascript', { httpOnly: true });
+  res.cookie('javascriptAccessibleBearerToken', 'this is a less secure bank account session token', { httpOnly: false });
   next();
 });
 
