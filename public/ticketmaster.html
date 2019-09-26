@@ -1,23 +1,27 @@
-<html>
+<html lang="en">
   <head>
     <title>Totally TicketMaster</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
   <body>
-    <h1>Totally Ticketmaster</h1>
-    <form id="form">
+    <div class="container">
+      <h1>Totally Ticketmaster</h1>
+      <form id="form">
         <h2>Jonas Brothers Concert OMG</h2>
+        <hr />
         <h3>How many tickets do you want to buy? (Limit 3)</h3>
-        <input type="number" value="1" max="3" min=0 id="numberOfTickets" />
+        <input type="number" value="1" max="3" min=0 id="numberOfTickets" class="form-control" />
         <h3>Jonas Gold members are eligible for a discount</h3>
-        <input type="checkbox" id="discount" disabled />
+        <input type="checkbox" id="discount" disabled class="form-control" />
         <div>
-          <button type="submit">
+          <button type="submit" class="btn btn-primary">
             Purchase tickets
           </button>
         </div>
       </form>
-      <h2 id="results" />
+      <h2 id="results"></h2>
       <script src="/ticketmaster.js"></script>
+    </div>
 
   </body>
 </html>
