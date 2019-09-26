@@ -2,6 +2,15 @@
   <head>
     <title>Totally TicketMaster</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style type="text/css">
+    .disabledContainer {
+
+        cursor: not-allowed !important;
+    }
+      .disabled {
+        pointer-events: none;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -12,7 +21,9 @@
         <h3>How many tickets do you want to buy? (Limit 3)</h3>
         <input type="number" value="1" max="3" min=0 id="numberOfTickets" class="form-control" />
         <h3>Jonas Gold members are eligible for a discount</h3>
-        <input type="checkbox" id="discount" disabled class="form-control" />
+        <div class="disabledContainer">
+          <input type="checkbox" id="discount" class="form-control disabled" />
+        </div>
         <div>
           <button type="submit" class="btn btn-primary">
             Purchase tickets
