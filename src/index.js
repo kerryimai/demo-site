@@ -10,8 +10,7 @@ app.use(bodyParser.json());
 app.use(cors({ methods: '*' }));
 
 app.use((req, res, next) => {
-  res.cookie('httpOnlyBearerToken', 'this is a bank account bearer token that is inaccessible from Javascript', { httpOnly: true });
-  res.cookie('javascriptAccessibleBearerToken', 'this is a less secure bank account session token', { httpOnly: false });
+  res.cookie('userAuthenticationToken', 'since you received this from our servers, you\'re logged in', { httpOnly: false });
   next();
 });
 
@@ -82,6 +81,10 @@ app.post('/comments', (req, res) => {
     res.status(200).send();
   });
 })
+
+app.post('/tickets', (req, res) => {
+  res.status(200).send();
+});
 
 app.use(express.static('public'))
 
