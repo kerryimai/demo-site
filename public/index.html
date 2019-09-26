@@ -1,17 +1,18 @@
 <html>
   <head>
     <title>Totally Safe and Secure Site</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
-  <body>
+  <body class="container">
     <h1>Comments</h1>
     <form id="form">
         <h2>Post new comment</h2>
         <h3>Comment text</h3>
-        <textarea id="comment"></textarea>
+        <textarea id="comment" class="form-control"></textarea>
         <h2>Name</h2>
-        <input id="name" />
+        <input id="name" class="form-control" />
         <div>
-          <button type="submit">
+          <button type="submit" class="btn btn-primary">
             Post new comment
           </button>
         </div>
@@ -19,10 +20,14 @@
 
       <form id="filter">
         <h2>Filter comments by user</h2>
-        <input id="filterText" />
+        <input id="filterText" class="form-control" />
       </form>
 
       <div id="comments"></div>
+
+      <hr />
+      <button id="delete" class="btn btn-danger">Delete all comments</button>
+
       <script src="/index.js"></script>
   </body>
 </html>

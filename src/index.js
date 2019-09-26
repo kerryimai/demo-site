@@ -86,6 +86,12 @@ app.post('/tickets', (req, res) => {
   res.status(200).send();
 });
 
+app.delete('/comments', (req, res) => {
+  client.query('DELETE FROM comments', () => {
+    res.status(200).send();
+  });
+})
+
 app.use(express.static('public'))
 
 app.listen(port, () => console.log('server started on port ' + port));

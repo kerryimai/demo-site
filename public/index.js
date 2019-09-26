@@ -38,4 +38,8 @@ document.getElementById('filter').addEventListener('submit', (e) => {
   fetchData();
 });
 
+document.getElementById('delete').addEventListener('click', () => {
+  fetch('/comments', { method: 'DELETE' }).then(fetchData)
+})
+
 fetchData();
